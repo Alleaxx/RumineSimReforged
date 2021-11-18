@@ -102,6 +102,10 @@ export class Rumine implements IRumine{
         this.users = new UserCollection(this.userCreator.CreateList(this.nowDate, this.groups));
     }
     public ClearData(){
+        const dates : IDatesCreator = new ClassicDates();
+        this.startDate = dates.StartDate();
+        this.nowDate = this.startDate;
+
         this.history = new History();
         this.groups = new GroupsCollection({ groups: [], changer: undefined });
         this.users = new UserCollection([]);
