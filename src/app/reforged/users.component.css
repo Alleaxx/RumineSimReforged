@@ -1,0 +1,27 @@
+/* СПИСОК ПОЛЬЗОВАТЕЛЕЙ */
+
+.users-list{
+    font-size: 0.8em;
+}
+.users-list th{
+    text-align: left;
+}
+.users-list th, .users-list td{
+    padding: 0 2px;
+}
+.users-list caption{
+    text-align: left;
+    font-size: 1.2em;
+}
+.users-list h3{
+    margin: 4px 0;
+}
+.numeric{
+    text-align: right;
+}
+.symbol{
+    text-align: center;
+}
+.users-list .group{
+    font-weight: 500;
+}

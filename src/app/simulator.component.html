@@ -1,0 +1,29 @@
+<div class="simulator">
+
+    <nav class="simulator-menu">
+        <ul class="tab-menu">
+            <li class="item" (click)="SetActive(1)" [class.selected]="IsActive(1)">Главная</li>
+            <li class="item" (click)="SetActive(2)" [class.selected]="IsActive(2)">События</li>
+            <li class="item" (click)="SetActive(3)" [class.selected]="IsActive(3)">Просмотр пользователей</li>
+        </ul>
+    </nav>
+    
+    <div class="simulator-content" [ngSwitch]=[selectedTab]>
+
+        <ng-template ngSwitchCase="1">
+            <legacy-main></legacy-main>
+        </ng-template>
+
+        <ng-template ngSwitchCase="2">
+            <legacy-events></legacy-events>
+        </ng-template>
+        
+        <ng-template ngSwitchCase="3">
+            <legacy-users></legacy-users>
+        </ng-template>
+        <ng-template ngSwitchDefault>
+            111
+        </ng-template>
+    </div>
+    
+</div>

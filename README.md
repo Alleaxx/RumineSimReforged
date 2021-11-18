@@ -1,27 +1,30 @@
-# RumineSimReforged
+# Симулятор Румине Reforged
+Приложение, которое переносит оригинальную Windows-версию случайного симулятора пользователей и активности ru-minecraft.ru 2016 года в **браузер**.
+Новая версия повторяет старый интерфейс и внутреннюю логику работы со всеми их недостатками и преимуществами (если они есть).
+Внутри же всё было переписано полностью с нуля.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+<a href=#>Расположен симулятор здесь</a>.
 
-## Development server
+## Технологии 
+- C# -> TypeScript
+- WinForms -> Angular 12
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Разумеется, архитектуру кода пришлось переосмыслить, так как оригинальный код 2016 года использовать нельзя. Посмеяться можно, но не более ([оригинальная версия](репозиторий)).
 
-## Code scaffolding
+Теперь появился простор для настройки и конфигурации, хотя на данный момент эта возможность почти не используется.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Подробности
 
-## Build
+### 1.0
+Первая версия практически полностью построена на случайности, а события не связаны друг с другом.
+#### Пользователи
+Генерируются один раз при создании Румайна. Новые пользователи не появляются, вся статистика (сообщения, симпатии) и характер (вероятность измениться, проявить активность) фиксированы.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Группа, состояние адекватности и активность могут измениться.
+#### Активность
+Выражается в условных страницах (ФЧ, судя по всему). Имеет больший шанс увеличиться, нежели уменьшиться.
+Старение Румайна усиливает эффект падения активности. При наступлении нового дня в начале генерируется именно количество страниц.
+#### События
+Шанс возникновения события зависит от количества сгенерированных страниц, больше = лучше. Если вероятность создать событие сработала, то отбирается список пользователей, которые могут послужить инициаторами (зависит от их шанса на активность). Из этого списка выбирается случайный пользователь и уже в зависимости от его состояния генерируется событие.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Каждое событие влияет на активность следующих дней. Влияние зависит от типа события (если хорошее, то модификатор увеличивается, если плохое, то...).

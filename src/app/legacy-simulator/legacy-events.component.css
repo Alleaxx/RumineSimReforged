@@ -1,0 +1,40 @@
+
+/* СОБЫТИЯ */
+.events-section{
+    display: flex;
+    flex-direction: column;
+}
+.events-status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+}
+.events-content{
+    display: flex;
+    flex: 1;
+    margin: 6px 0;
+}
+.events-list{
+    flex: 4;
+}
+.events-info{
+    flex: 7;
+}
+
+.events-info .property{
+    max-width: 20em;
+}
+
+.events-title{
+    margin: 4px 6px;
+    display: inline;
+}
+.events-list ul{
+    margin: 0 15px;
+}
+.event-description{
+    border: 1px solid silver;
+    padding: 2px;
+    margin: 2px;
+}

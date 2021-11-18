@@ -1,0 +1,48 @@
+
+<div class="window" [class.maxed]="IsMaxed()">
+    <div class="window-bar">
+        <header class="row">
+            <img src="https://ru-minecraft.ru/templates/new2/dleimages/noavatar.png" />
+            <h1>
+                Симулятор Румине
+            </h1>
+        </header>
+        <div>
+            <button (click)="SetMinned()">–</button>
+            <button (click)="ToggleMaxed()">□</button>
+            <button class="close-button">×</button>
+        </div>
+    </div>
+    <div class="window-content">
+        <nav class="window-menu">
+            <ul>
+                <li>
+                    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <img src="assets/images/СтарыйГерб.png" />
+                        Версия 1.0
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/reforged" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <img src="assets/images/СтарыйГербReforged.png" />
+                        Версия 1.5
+                    </a>
+                </li>
+                <li hidden class="separator"></li>
+                <li>
+                    <a routerLink="/options" routerLinkActive="active">
+                        Настройки
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/about" routerLinkActive="active">
+                        Приложение
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

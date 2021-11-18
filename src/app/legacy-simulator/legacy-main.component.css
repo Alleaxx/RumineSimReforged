@@ -1,0 +1,25 @@
+/* ГЛАВНАЯ СЕКЦИЯ */
+.main-section{
+    display: flex;
+    height: 96%;
+}
+.info-section{
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+.activity-section{
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    padding: 0 5px;
+    padding-top: 6px;
+}
+
+.activity-content{
+    flex: 1;
+    border: 1px solid gainsboro;
+}
+

@@ -1,0 +1,110 @@
+<section class="activity">
+    <h2>Сегодня {{DateNow()}}</h2>
+    <button class="start" (click)="ToggleSimulation()">
+         <img *ngIf="rumine.paused" src="assets/images/play.svg">
+         <img *ngIf="!rumine.paused" src="assets/images/pause.svg">
+    </button>
+    <button class="start" (click)="StartSimulation()">
+         Поведать историю о славных подвигах!
+    </button>
+    <span>
+        За 
+        <input [(ngModel)]="amount" type="number" min="1" max="1000"/>
+         дней
+    </span>
+    <span class="info" [style.opacity]="infoVisibility">
+        {{info}}
+    </span>
+    <div class="activity-info">
+        <span>Страниц: {{LastActivity.pages | number:'1.1-1'}}</span>
+        <div class="activity-progress">
+            <div class="activity-progress now" [style.width.%]="LastActivity.pages / rumine.history.PagesAverage() / 4 * 100"></div>
+        </div>
+    </div>
+    <div>     
+        <span>В среднем за месяц: {{rumine.history.PagesAverage() | number:'1.1-1'}}</span>
+        <div class="activity-progress">
+            <div class="activity-progress average" [style.width.%]="25"></div>
+        </div>
+    </div>
+    
+    
+    <div class="activity-section">
+        <ul class="tab-menu reforged">
+            <li class="item" (click)="SetTab(1)" [class.selected]="IsActive(1)">
+                <img src="assets/images/calendar.svg" />
+                События
+            </li>
+            <li class="item" (click)="SetTab(2)" [class.selected]="IsActive(2)">
+                <img src="assets/images/bar-chart-2.svg" />
+                Активность
+            </li>
+        </ul>
+        <div class="activity-content" [ngSwitch]=[tab]>
+            <ng-template ngSwitchCase='1'>
+                <div class="search">
+                    <input type="search" value="" placeholder="Поиск..." [(ngModel)]="search"/>
+                    <select [(ngModel)]="category">
+                        <option *ngFor="let cate of EventCates()" [ngValue]="cate">{{cate}}</option>
+                    </select>
+                </div>
+                <p *ngIf="rumine.history.AllEvents().length === 0">
+                    Пока что никаких событий не произошло...
+                </p>
+                <table class="last-events">
+                    <colgroup>
+                        <col style="width: 15%;" />
+                        <col style="width: 15%;" />
+                        <col style="width: 60%;" />
+                        <col style="width: 10%;" />
+                    </colgroup>
+                    <tr *ngFor="let eve of ShowedEvents()">
+                        <td class="event-date">
+                            {{eve.dates.start | date:"dd-MMM-yyyy"}}
+                        </td>
+                        <td class="event-creator" [style.color]="eve.creator.group.color">
+                            {{eve.creator.nick}}
+                        </td>
+                        <td class="event-description">
+                            {{eve.description}}</td>
+                        <td class="event-influence" [class.negative]="eve.influence < 0">
+                            {{eve.influence}}
+                        </td>
+                    </tr>
+                </table>
+            </ng-template>
+            <ng-template ngSwitchCase='2'>
+                <p *ngIf="rumine.history.passed.length === 0">
+                    Пока что никаких историй не рассказано...
+                </p>
+                <details class="month-stat" *ngFor="let group of rumine.history.GroupedByMonth().reverse()">
+                    <summary>Статистика {{group.date | date:"MMMM yyyy"}}</summary>
+                    <table>
+                        <tr>
+                            <th>{{group.stories.length}} дней</th>
+                            <th class="numeric">Всего</th>
+                            <!-- {{PagesSumFor(group.stories) | number:'1.2-2'}} -->
+                            <th class="numeric">Событий {{EventsAmountFor(group.stories)}}</th>
+                            <th class="numeric">Юзеров</th>
+                        </tr>
+                        <tr *ngFor="let story of group.stories.reverse()">
+                            <td class="event-date">
+                                {{story.dates.Format()}}
+                            </td>
+                            <td class="numeric">
+                                {{story.activity.pages | number:'1.1-1'}}
+                            </td>
+                            <td class="numeric">
+                                {{story.events.length}}
+                            </td>
+                            <td class="numeric">
+                                {{story.users.length}}
+                            </td>
+                        </tr>
+                    </table>
+                </details>
+            </ng-template>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,28 @@
+<table class="users-list">
+    <tr>
+        <th>Ник</th>
+        <th>Регистрация</th>
+        <th>Группа</th>
+        <th>Активен?</th>
+        <th>Рак</th>
+        <th>Бан</th>
+        <th>Модер?</th>
+        <th class="numeric">Посты</th>
+        <th class="numeric">Симпатии</th>
+        <th class="numeric">Уход</th>
+        <th class="numeric">Изменения</th>
+    </tr>
+    <tr *ngFor="let user of Users()">
+        <td>{{user.nick}}</td>
+        <td>{{user.registration | date:'dd-MM-yyyy'}}</td>
+        <td class="group" [style.color]="user.group.color">{{user.group.name}}</td>
+        <td class="symbol"><span *ngIf="user.active">+</span><span *ngIf="!user.active">-</span></td>
+        <td class="symbol"><span *ngIf="user.rak">+</span><span *ngIf="!user.rak">-</span></td>
+        <td class="symbol"><span *ngIf="user.banned">+</span><span *ngIf="!user.banned">-</span></td>
+        <td class="symbol"><span *ngIf="user.IsModer">+</span><span *ngIf="!user.IsModer">-</span></td>
+        <td class="numeric">{{user.messages}}</td>
+        <td class="numeric">{{user.likes}}</td>
+        <td class="numeric">{{user.chanceToLeave | number:'1.2-2'}}</td>
+        <td class="numeric">{{user.chanceToChange | number:'1.2-2'}}</td>
+    </tr>
+</table>

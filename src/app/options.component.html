@@ -1,0 +1,77 @@
+<section class="options">
+
+    <h2>Настройки симулятора</h2>
+    <section class="properties-section">
+        <div class="config">
+            <section class="property">
+                <select [(ngModel)]="groupConfig">
+                    <option *ngFor="let config of groupConfigs" [ngValue]="config">{{config.name}}</option>
+                </select>
+            </section>
+            <div>
+                <ul>
+                    <li *ngFor="let text of groupConfig.description">{{text}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="config">
+            <section class="property">
+                <select [(ngModel)]="userConfig">
+                    <option *ngFor="let config of userConfigs" [ngValue]="config">{{config.name}}</option>
+                </select>
+            </section>
+            <div>
+                <ul>
+                    <li *ngFor="let text of userConfig.description">{{text}}</li>
+                </ul>
+            </div>
+            <div class="property-info">
+                <span>{{userConfig.config.amount}}</span>
+                <input type="range" min="10" max="100" value="50" [(ngModel)]="userConfig.config.amount" />
+            </div>
+        </div>
+        <div class="config">
+            <section class="property">
+                <select [(ngModel)]="activityConfig">
+                    <option *ngFor="let config of activityConfigs" [ngValue]="config">{{config.name}}</option>
+                </select>
+            </section>
+            <div>
+                <ul>
+                    <li *ngFor="let text of activityConfig.description">{{text}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="config">
+            <section class="property">
+                <select [(ngModel)]="eventsConfig">
+                    <option *ngFor="let config of eventsConfigs" [ngValue]="config">{{config.name}}</option>
+                </select>
+            </section>
+            <div>
+                <ul>
+                    <li *ngFor="let text of eventsConfig.description">{{text}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="config">
+            <section class="property">
+                <select [(ngModel)]="storyConfig">
+                    <option *ngFor="let config of storyConfigs" [ngValue]="config">{{config.name}}</option>
+                </select>
+            </section>
+            <div>
+                <ul>
+                    <li *ngFor="let text of storyConfig.description">{{text}}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <button (click)="ApplySettings()">
+        Применить настройки (пересоздать сайт)
+    </button>
+    <p class="info" [style.opacity]="optionsVisibility">
+        Настройки применены
+    </p>
+</section>

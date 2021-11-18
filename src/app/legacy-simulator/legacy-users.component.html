@@ -1,0 +1,125 @@
+
+<div class="users-section">
+    <header class="users-header">
+        <h2>Список пользователей</h2>
+        <div class="users-control">
+            <select [(ngModel)]="category">>
+                <option *ngFor="let cate of categories" [ngValue]="cate"> {{cate}}</option>
+            </select>
+            <input placeholder="Найти..." [(ngModel)]="search"/>
+            <button>></button>
+            <button>Обновить</button>
+        </div>
+        <div class="row">
+            <div class="user-stat">
+                <span>Всего юзеров: {{users.Amount()}}</span><br>
+                <span>Активных: {{users.AmountActive()}}</span><br>
+                <span>Забанено: {{users.AmountBanned()}}</span>
+            </div>
+            <div class="user-stat">
+                <span>Раков: {{users.AmountRak()}}</span><br>
+                <span>Модераторов: {{users.AmountModer()}}</span>
+            </div>
+        </div>
+    </header>
+    <ul class="users-list listbox">
+        <li class="list-item" (click)="SetUser(user)" [class.selected]="IsUserActive(user)" *ngFor="let user of Users()">{{user.nick}}</li>
+    </ul>
+    <section class="users-info">
+        <h3 class="users-info-title">{{userSelected.nick}}</h3>
+        <ul class="tab-menu">
+            <li class="item" (click)='SetInfoTab(1)' [class.selected]='IsInfoActive(1)'>Основное</li>
+            <li class="item" (click)='SetInfoTab(2)' [class.selected]='IsInfoActive(2)'>Прочее</li>
+        </ul>
+        <div [ngSwitch]=[tabInfo]>
+            <ng-template ngSwitchCase="1">
+                <section class="properties-section">
+                    <div>
+                        <section class="property">
+                            <h4 class="property-title">Регистрация:</h4>
+                            <span>{{userSelected.registration | date:"dd-MM-yyyy"}}</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">
+                                <span *ngIf="userSelected.active">Активен</span>
+                                <span *ngIf="!userSelected.active">Неактивен</span>
+                            </h4>
+                        </section>
+                        <section class="property">
+                            <span *ngIf="userSelected.rak">Рак</span>
+                            <span *ngIf="!userSelected.rak">Адекват</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">Группа:</h4>
+                            <span class="property">
+                                <span *ngIf="userSelected.banned">Забанен ({{userSelected.group.name}})</span>
+                                <span *ngIf="!userSelected.banned">{{userSelected.group.name}}</span>
+                            </span>
+                        </section>
+                        <section class="property">
+                            <span *ngIf="userSelected.IsModer">Модератор</span>
+                            <span *ngIf="!userSelected.IsModer">Обычный пользователь</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">Сообщений:</h4>
+                            <span>{{userSelected.messages}}</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">Симпатий:</h4>
+                            <span>{{userSelected.likes}}</span>
+                        </section>
+                    </div>
+                </section>
+            </ng-template>
+            <ng-template ngSwitchCase="2">
+                <section class="properties-section">
+                    <div>
+                        <section class="property">
+                            <h4 class="property-title">Шанс ухода:</h4>
+                            <span>{{userSelected.chanceToLeave * 100 | number:'1.2-2'}}%</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">Вероятность изменения:</h4>
+                            <span>{{userSelected.chanceToChange * 100 | number:'1.2-2'}}%</span>
+                        </section>
+                    </div>
+                </section>
+            </ng-template>
+        </div>
+    </section>
+    <section class="users-more-info">
+        <ul class="tab-menu">
+            <li class="item" (click)='SetMoreTab(1)' [class.selected]='IsMoreActive(1)'>Лог</li>
+            <li class="item" (click)='SetMoreTab(2)' [class.selected]='IsMoreActive(2)'>Событие</li>
+            <li class="item" (click)='SetMoreTab(3)' [class.selected]='IsMoreActive(3)'>Описание</li>
+        </ul>
+        <div style="flex:1" [ngSwitch]=[tabMoreInfo]>
+            <ng-template ngSwitchCase='1'>
+                <textarea class="textbox">{{EventsLog()}}</textarea>
+            </ng-template>
+            <ng-template ngSwitchCase='2'>
+                <ul class="listbox">
+                    <li class="list-item" [class.selected]="eve === eventSelected" (click)="SetEvent(eve)" *ngFor="let eve of UserEvents()">{{eve.name}}</li>
+                </ul>
+            </ng-template>
+            <ng-template ngSwitchCase='3' *ngIf="eventSelected !== null">
+                <section class="properties-section">
+                    <div>
+                        <section class="property">
+                            <h4 class="property-title">Дата:</h4>
+                            <span>{{eventSelected.dates.start | date:'dd-MMM-yyyy'}}</span>
+                        </section>
+                        <section class="property">
+                            <h4 class="property-title">Влияние:</h4>
+                            <span>{{eventSelected.influence}}</span>
+                        </section>
+                        <section class="property col">
+                            <h4 class="property-title">Описание:</h4>
+                            <textarea class="textbox">{{eventSelected.description}}</textarea>
+                        </section>
+                    </div>
+                </section>
+            </ng-template>
+        </div>
+    </section>
+</div>

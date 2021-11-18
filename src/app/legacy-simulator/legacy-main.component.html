@@ -1,0 +1,60 @@
+<div class="main-section">
+    <div class="info-section">
+        <section class="properties-section">
+            <h3 class="properties-section-title">{{DateNow()}}</h3>
+            <div>
+                <section class="property">
+                    <h4 class="property-title">За вчерашний день</h4>
+                    <span>{{LastActivity.pages | number:'1.1-1'}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">~ за последние {{rumine.history.countEvents}} дней</h4>
+                    <span>{{rumine.history.PagesAverage() | number:'1.1-1'}}</span>
+                </section>
+            </div>
+        </section>
+        <section class="properties-section">
+            <h3 class="properties-section-title">Параметры</h3>
+            <div>
+                <section class="property">
+                    <h4 class="property-title">Старение Румине:</h4>
+                    <span>{{LastActivity.mod.down}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Модиф месяца:</h4>
+                    <span>{{LastActivity.mod.month | number:"1.1-1"}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Модификатор сезона:</h4>
+                    <span>{{LastActivity.mod.season | number:"1.1-1"}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Адекватность (шанс события):</h4>
+                    <span>4</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Активность:</h4>
+                    <span>{{LastActivity.mod.up}}</span>
+                </section>
+            </div>
+        </section>
+        <button (click)="StartSimulation()">
+            <span *ngIf="rumine.paused">Начать симуляцию!</span>
+            <span *ngIf="!rumine.paused">Приостановить</span>
+        </button>
+    </div>
+    <div class="activity-section">
+        <ul class="tab-menu">
+            <li class="item" (click)="SetTab(1)" [class.selected]="IsActive(1)">Активность</li>
+            <li class="item" (click)="SetTab(2)" [class.selected]="IsActive(2)">События</li>
+        </ul>
+        <div class="activity-content" [ngSwitch]=[tab]>
+            <ng-template ngSwitchCase='1'>
+                <textarea style="height:98%; width: 98%;">{{ActivityLog()}}</textarea>
+            </ng-template>
+            <ng-template ngSwitchCase='2'>
+                <textarea style="height:98%; width: 98%;">{{EventsLog()}}</textarea>
+            </ng-template>
+        </div>
+    </div>
+</div>

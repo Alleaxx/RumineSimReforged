@@ -1,0 +1,39 @@
+/* ПРОСМОТР ПОЛЬЗОВАТЕЛЕЙ */
+.users-section{
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+     "header header more-info"
+     "list info more-info";
+}
+.users-header{
+    grid-area: header;
+    margin: 0 4px 8px 4px;
+}
+.users-list{
+    grid-area: list;
+    margin: 0 4px;
+}
+.users-info{
+    grid-area: info;
+    margin: 0 4px;
+}
+.users-more-info{
+    grid-area: more-info;
+    margin: 0 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.users-info-title{
+    margin: 4px;
+}
+.users-control{
+    display: flex;
+    justify-content: space-between;
+}
+.user-stat{
+    padding: 4px;
+}
+

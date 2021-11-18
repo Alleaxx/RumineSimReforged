@@ -1,0 +1,44 @@
+
+<div class="events-section" *ngIf="events.length > 0">
+    <header class="events-status">
+        <div>
+            <h3 class="events-title">Прошедшие события</h3>
+            <select [(ngModel)]="Category">
+                <option *ngFor="let cate of categories" [ngValue]="cate">{{cate}}</option>
+            </select>
+        </div>
+        <span>Шанс события: {{rumine.EventChance() * 100 | number:'1.2-2'}}%</span>
+    </header>
+    <div class="events-content">
+        <div class="events-list">
+            <ul class="listbox" >
+                <li class="list-item" [class.selected]="IsActiveEvent(eve)" *ngFor="let eve of events" (click)="SetEvent(eve)">{{eve.name}}</li>
+            </ul>
+        </div>
+        <div class="events-info">
+            <section class="properties-section">
+                <h3 class="properties-section-title">Информация </h3>
+                <section class="property">
+                    <h4 class="property-title">Тип события:</h4>
+                    <span>{{currentEvent.type}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Дата:</h4>
+                    <span>{{currentEvent.dates.start | date:"dd MMMM yyyy"}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Инициатор:</h4>
+                    <span>{{currentEvent.creator.nick}}</span>
+                </section>
+                <section class="property">
+                    <h4 class="property-title">Влияние:</h4>
+                    <span>{{currentEvent.influence}}</span>
+                </section>
+                <section class="property col">
+                    <h4 class="property-title">Краткое описание:</h4>
+                    <textarea class="textbox">{{currentEvent.description}}</textarea>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>

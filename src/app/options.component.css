@@ -1,0 +1,33 @@
+.options{
+    max-width: 30em;
+    padding: 0.5em;
+}
+.options ul{
+    margin: 4px;
+    font-size: 0.85em;
+    color: #3a3a3a;
+}
+.config{
+    margin-bottom: 1em;
+}
+
+.options button{
+    width: 100%;
+    margin: 4px;
+    padding: 4px 8px;
+    background-color: transparent;
+    cursor: pointer;
+    outline: 0;
+    border: 1px solid black;
+}
+.options button:hover{
+    background-color: whitesmoke;
+}
+.options button:active{
+    background-color: gainsboro;
+}
+
+.options select{
+    border: 0;
+    padding: 2px 6px;
+}

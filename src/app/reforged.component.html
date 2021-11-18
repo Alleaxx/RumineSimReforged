@@ -1,0 +1,28 @@
+<div class="simulator">
+
+    <nav class="simulator-menu">
+        <ul class="tab-menu reforged">
+            <li class="item" (click)="SetActive(1)" [class.selected]="IsActive(1)">
+                <img src="assets/images/activity.svg" />
+                Последние новости
+            </li>
+            <li class="item" (click)="SetActive(2)" [class.selected]="IsActive(2)">
+                <img src="assets/images/users.svg" />
+                Пользователи
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="simulator-content" [ngSwitch]=[selectedTab]>
+
+        <ng-template ngSwitchCase="1">
+            <activity></activity>
+        </ng-template>
+
+        <ng-template ngSwitchCase="2">
+            <users></users>
+        </ng-template>
+        
+    </div>
+    
+</div>
