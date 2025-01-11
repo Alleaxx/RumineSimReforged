@@ -9,5 +9,5 @@ if (environment.production) {
 }
 
 const platform = platformBrowserDynamic();
-platform.bootstrapModule(AppModule);
-  //.catch(err => console.error(err));
+platform.bootstrapModule(AppModule)
+  .catch(err => console.error(err));

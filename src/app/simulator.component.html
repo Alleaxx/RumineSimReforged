@@ -8,19 +8,20 @@
         </ul>
     </nav>
     
-    <div class="simulator-content" [ngSwitch]=[selectedTab]>
+    <div class="simulator-content" [ngSwitch]="selectedTab">
 
-        <ng-template ngSwitchCase="1">
+        <ng-template [ngSwitchCase]="1">
             <legacy-main></legacy-main>
         </ng-template>
 
-        <ng-template ngSwitchCase="2">
+        <ng-template [ngSwitchCase]="2">
             <legacy-events></legacy-events>
         </ng-template>
         
-        <ng-template ngSwitchCase="3">
+        <ng-template [ngSwitchCase]="3">
             <legacy-users></legacy-users>
         </ng-template>
+        
         <ng-template ngSwitchDefault>
             111
         </ng-template>

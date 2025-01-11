@@ -2,8 +2,9 @@ import { Component, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'simulator',
+  standalone: false,
   templateUrl: './simulator.component.html',
-  styleUrls: [ './simulator.component.css']
+  styleUrl: './simulator.component.css'
 })
 export class SimulatorComponent{
     selectedTab : number = 1;

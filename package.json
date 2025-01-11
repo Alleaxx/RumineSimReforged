@@ -1,31 +1,28 @@
 {
-  "name": "rumine-sim-reforged",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "~12.2.0",
-    "@angular/common": "~12.2.0",
-    "@angular/compiler": "~12.2.0",
-    "@angular/core": "~12.2.0",
-    "@angular/forms": "~12.2.0",
-    "@angular/platform-browser": "~12.2.0",
-    "@angular/platform-browser-dynamic": "~12.2.0",
-    "@angular/router": "~12.2.0",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.9",
-    "@angular/cli": "~12.2.9",
-    "@angular/compiler-cli": "~12.2.0",
-    "@types/node": "^12.11.1",
-    "typescript": "~4.3.5"
+    "name": "ruminesimreforgedapp",
+    "version": "0.6.0",
+    "description": "Симулятор Румине 1.5, Reforged-версия на ангуляре",
+    "author": "Allexx",
+    "scripts": {
+      "ng": "ng",
+      "start": "ng serve",
+      "build": "ng build"
+    },
+    "dependencies": {
+      "@angular/common": "~19.0.0",
+      "@angular/compiler": "~19.0.0",
+      "@angular/core": "~19.0.0",
+      "@angular/forms": "~19.0.0",
+      "@angular/platform-browser": "~19.0.0",
+      "@angular/platform-browser-dynamic": "~19.0.0",
+      "@angular/router": "~19.0.0",
+      "rxjs": "~7.8.1",
+      "zone.js": "~0.15.0"
+    },
+    "devDependencies": {
+      "@angular-devkit/build-angular": "~19.0.0",
+      "@angular/cli": "~19.0.0",
+      "@angular/compiler-cli": "~19.0.0",
+      "typescript": "~5.5.0"
+    }
   }
-}

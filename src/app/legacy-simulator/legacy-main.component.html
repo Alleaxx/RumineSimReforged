@@ -48,11 +48,11 @@
             <li class="item" (click)="SetTab(1)" [class.selected]="IsActive(1)">Активность</li>
             <li class="item" (click)="SetTab(2)" [class.selected]="IsActive(2)">События</li>
         </ul>
-        <div class="activity-content" [ngSwitch]=[tab]>
-            <ng-template ngSwitchCase='1'>
+        <div class="activity-content" [ngSwitch]="tab">
+            <ng-template [ngSwitchCase]='1'>
                 <textarea style="height:98%; width: 98%;">{{ActivityLog()}}</textarea>
             </ng-template>
-            <ng-template ngSwitchCase='2'>
+            <ng-template [ngSwitchCase]='2'>
                 <textarea style="height:98%; width: 98%;">{{EventsLog()}}</textarea>
             </ng-template>
         </div>

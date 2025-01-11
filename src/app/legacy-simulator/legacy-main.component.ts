@@ -6,8 +6,9 @@ import { History } from '../services/history';
 
 @Component({
   selector: 'legacy-main',
+  standalone: false,
   templateUrl: './legacy-main.component.html',
-  styleUrls: [ './legacy-main.component.css']
+  styleUrl: './legacy-main.component.css'
 })
 export class LegacyMainComponent{
     readonly rumine : IRumine;

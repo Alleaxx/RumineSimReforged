@@ -6,8 +6,9 @@ import { User, UserCate, UserCollection } from '../services/user';
 
 @Component({
   selector: 'legacy-users',
+  standalone: false,
   templateUrl: './legacy-users.component.html',
-  styleUrls: [ './legacy-users.component.css']
+  styleUrl: './legacy-users.component.css'
 })
 export class LegacyUsersComponent {
   tabInfo : number = 1;

@@ -4,8 +4,9 @@ import { Event, EventTypes } from '../services/event';
 
 @Component({
   selector: 'legacy-events',
+  standalone: false,
   templateUrl: './legacy-events.component.html',
-  styleUrls: [ './legacy-events.component.css']
+  styleUrl: './legacy-events.component.css'
 })
 export class LegacyEventsComponent {
   tab : number = 1;

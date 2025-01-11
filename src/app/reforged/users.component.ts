@@ -6,8 +6,9 @@ import { User, UserCate, UserCollection } from '../services/user';
 
 @Component({
   selector: 'users',
+  standalone: false,
   templateUrl: './users.component.html',
-  styleUrls: [ './users.component.css']
+  styleUrl: './users.component.css'
 })
 export class UsersComponent {
   readonly rumine : IRumine;

@@ -9,8 +9,9 @@ import { Event } from '../services/event';
 
 @Component({
   selector: 'activity',
+  standalone: false,
   templateUrl: './activity.component.html',
-  styleUrls: [ './activity.component.css']
+  styleUrl: './activity.component.css'
 })
 export class ActivityComponent {
     readonly rumine : IRumine;

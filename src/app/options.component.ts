@@ -25,8 +25,9 @@ class ConfigInfo<T> {
 
 @Component({
   selector: 'options',
+  standalone: false,
   templateUrl: './options.component.html',
-  styleUrls: [ './options.component.css']
+  styleUrl: './options.component.css'
 })
 export class OptionsComponent {
   random : Random;

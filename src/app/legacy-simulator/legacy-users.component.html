@@ -31,8 +31,8 @@
             <li class="item" (click)='SetInfoTab(1)' [class.selected]='IsInfoActive(1)'>Основное</li>
             <li class="item" (click)='SetInfoTab(2)' [class.selected]='IsInfoActive(2)'>Прочее</li>
         </ul>
-        <div [ngSwitch]=[tabInfo]>
-            <ng-template ngSwitchCase="1">
+        <div [ngSwitch]="tabInfo">
+            <ng-template [ngSwitchCase]="1">
                 <section class="properties-section">
                     <div>
                         <section class="property">
@@ -71,7 +71,7 @@
                     </div>
                 </section>
             </ng-template>
-            <ng-template ngSwitchCase="2">
+            <ng-template [ngSwitchCase]="2">
                 <section class="properties-section">
                     <div>
                         <section class="property">
@@ -93,16 +93,16 @@
             <li class="item" (click)='SetMoreTab(2)' [class.selected]='IsMoreActive(2)'>Событие</li>
             <li class="item" (click)='SetMoreTab(3)' [class.selected]='IsMoreActive(3)'>Описание</li>
         </ul>
-        <div style="flex:1" [ngSwitch]=[tabMoreInfo]>
-            <ng-template ngSwitchCase='1'>
+        <div style="flex:1" [ngSwitch]="tabMoreInfo">
+            <ng-template [ngSwitchCase]='1'>
                 <textarea class="textbox">{{EventsLog()}}</textarea>
             </ng-template>
-            <ng-template ngSwitchCase='2'>
+            <ng-template [ngSwitchCase]='2'>
                 <ul class="listbox">
                     <li class="list-item" [class.selected]="eve === eventSelected" (click)="SetEvent(eve)" *ngFor="let eve of UserEvents()">{{eve.name}}</li>
                 </ul>
             </ng-template>
-            <ng-template ngSwitchCase='3' *ngIf="eventSelected !== null">
+            <ng-template [ngSwitchCase]='3' *ngIf="eventSelected !== null">
                 <section class="properties-section">
                     <div>
                         <section class="property">

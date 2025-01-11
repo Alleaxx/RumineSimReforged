@@ -40,8 +40,8 @@
                 Активность
             </li>
         </ul>
-        <div class="activity-content" [ngSwitch]=[tab]>
-            <ng-template ngSwitchCase='1'>
+        <div class="activity-content" [ngSwitch]="tab">
+            <ng-template [ngSwitchCase]='1'>
                 <div class="search">
                     <input type="search" value="" placeholder="Поиск..." [(ngModel)]="search"/>
                     <select [(ngModel)]="category">
@@ -73,7 +73,7 @@
                     </tr>
                 </table>
             </ng-template>
-            <ng-template ngSwitchCase='2'>
+            <ng-template [ngSwitchCase]='2'>
                 <p *ngIf="rumine.history.passed.length === 0">
                     Пока что никаких историй не рассказано...
                 </p>
